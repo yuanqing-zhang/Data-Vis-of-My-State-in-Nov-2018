@@ -1,0 +1,72 @@
+<svg width="420" height="213" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_37_blur" x="-50%" y="-50%" width="200%" height="200%">
+   <feGaussianBlur stdDeviation="0"/>
+  </filter>
+  <linearGradient id="svg_23" x1="0" y1="1" x2="0" y2="0" spreadMethod="pad">
+   <stop stop-color="#494848" offset="0"/>
+   <stop stop-color="#b6b7b7" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="422" height="215" id="canvas_background" fill="#ffffff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#adadad" stroke-width="0" stroke-opacity="null" cx="114.433597" cy="120.284299" id="svg_53" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <ellipse fill="#adadad" stroke-width="0" stroke-opacity="null" cx="83.933626" cy="120.784298" id="svg_52" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <ellipse fill="#052077" stroke-width="0" stroke-opacity="null" cx="196.464895" cy="100.274562" id="svg_9" rx="36.666521" ry="38.33318" stroke="#000"/>
+  <rect fill="#052077" stroke-width="0" stroke-opacity="null" x="160.465037" y="97.941239" width="72.666376" height="87.999647" id="svg_10" stroke="#000"/>
+  <path id="svg_16" d="m50.921967,164.759603c0,0 5.24999,-1.95832 6.74998,-1.66666c1.49999,0.29166 2.74999,0.99999 3.24999,0.99999c0.5,0 0.83333,-0.83333 3.41666,-1.24999c2.58333,-0.41666 7.24998,1.91666 7.24998,1.91666c-1.375,1.25 -1.24998,0.875 -4.66665,0.83333c-3.41667,-0.04167 -4.12498,0.5 -6.83332,0.33333c-2.70834,-0.16667 -6.62498,0.33333 -8.16665,-0.5c-1.54167,-0.83333 -0.99999,-0.66666 -0.99999,-0.66666z" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#FFAAB8"/>
+  <path id="svg_17" d="m52.464337,166.426693c0,0 6.375,0.625 8.375,0.625c2,0 8.875,-0.625 9.625,-0.5c0.75,0.125 -0.875,2 -2.25,2.625c-1.375,0.625 -3.125,2.25 -7.5,2c-4.375,-0.25 -7.125,-2.25 -7.375,-2.5c-0.25,-0.25 -2,-2 -0.875,-2.25z" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#FFAAB8"/>
+  <path fill="#FFDBD2" stroke="#000" stroke-width="0" d="m187.131604,199.274178c0,0 16.66659,1.33333 19.99992,0c3.33333,-1.33333 -2.66666,-23.99991 6.66664,-35.3332c9.3333,-11.33328 11.99994,-19.33325 13.33328,-28.66655c1.33334,-9.3333 0,-13.99993 0,-21.33324c0,-7.33331 -1.33333,-21.33325 -1.33333,-21.33325c0,0 -31.59987,-3.33492 -34.79986,-14.66741c-3.19999,-11.33249 0.13333,8.00077 -21.19992,8.66743c-3.33332,1.33333 -3.99998,27.33323 -4.13331,27.33242c0.13333,9.5008 -0.03334,13.34268 1.46666,23.33405c1.5,9.99137 8.16667,21.6666 16.99995,29.83323c8.83328,8.16663 2.99997,32.16652 2.99997,32.16652z" id="svg_6"/>
+  <path fill="#FFDBD2" stroke-width="0" stroke-opacity="null" d="m224.464784,108.314128c0,0 13.33328,-5.49417 13.99994,6.32944c0.66667,11.82362 -9.99996,12.65888 -11.99995,11.60398c-1.99999,-1.05491 -1.99999,-17.93342 -1.99999,-17.93342z" id="svg_11" stroke="#000"/>
+  <path fill="#fcd3bf" stroke="#000" stroke-width="0" stroke-opacity="null" d="m166.131684,111.274518c0,0 -8.49995,-5.66663 -10.49995,4.99999c-2,10.66662 7.49994,11.16662 12.49994,10.16662c-2.66666,-2.66667 -1.99999,-15.16661 -1.99999,-15.16661z" id="svg_12"/>
+  <ellipse fill="url(#svg_23)" stroke="#000" stroke-width="0" stroke-opacity="null" cx="178.932074" cy="114.236623" id="svg_18" rx="6.999965" ry="6.999965" fill-opacity="0.4"/>
+  <ellipse fill="#FFDBD2" stroke-width="0" stroke-opacity="null" fill-opacity="null" cx="178.744845" cy="110.236644" id="svg_20" rx="8.062459" ry="7.74996" stroke="#000"/>
+  <ellipse fill="#0E353B" stroke-width="0" stroke-opacity="null" cx="178.931905" cy="108.867595" id="svg_13" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <ellipse fill="url(#svg_23)" stroke="#000" stroke-width="0" stroke-opacity="null" cx="210.148361" cy="113.986893" id="svg_24" rx="6.999965" ry="6.999965" fill-opacity="0.4"/>
+  <ellipse fill="#FFDBD2" stroke-width="0" stroke-opacity="null" fill-opacity="null" cx="209.961131" cy="109.986914" id="svg_25" rx="8.062459" ry="7.74996" stroke="#000"/>
+  <ellipse fill="#0E353B" stroke-width="0" stroke-opacity="null" cx="209.431876" cy="108.367596" id="svg_15" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <path fill="#FFDBD2" stroke="#000" stroke-width="0" stroke-opacity="null" fill-opacity="null" opacity="0.5" d="m182.977414,103.697128c0,0 -9.69163,-3.0837 -10.04405,-3.1718" id="svg_39"/>
+  <path id="svg_4" d="m-62.04179,200.70917c0.305,-0.875 1.5,0 0,1.125c-1.5,-1.125 -0.305,-2 0,-1.125z" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#d8082e"/>
+  <path fill="#2e3766" stroke-width="0" stroke-opacity="null" d="m183.979404,133.491568c0,0 -1.8546,-0.50528 -1.80109,2.1099c0.0535,2.61518 1.76173,12.30265 12.41156,12.65933c10.64983,0.35668 13.29373,-9.47298 13.0039,-11.86814c-0.28982,-2.39516 -0.69936,-2.47034 -2.0012,-2.63735c-1.30185,-0.16701 -19.79751,-0.92631 -21.61317,-0.26374z" id="svg_33" opacity="0.98" stroke="#000"/>
+  <path fill="#f7f7f7" stroke-width="0" stroke-opacity="null" d="m185.311414,133.326708c0,0 -0.71783,2.49554 -0.01795,3.74722c0.69986,1.2517 17.71308,1.18947 18.23351,0.38095c0.52045,-0.80853 0.76334,-3.25121 0.10649,-3.84519c-0.65685,-0.59397 -17.08373,-0.73001 -18.32205,-0.28298z" id="svg_34" opacity="0.98" stroke="#000"/>
+  <path fill="#ffaad4" stroke-width="0" stroke-opacity="null" d="m205.840004,142.327048c0,0 -2.42949,-0.7147 -5.96332,-0.15882c-3.53381,0.55588 -5.38866,2.41839 -6.55227,2.85881c-1.16362,0.44042 -0.14725,-0.47648 -0.14725,-0.47648c0,0 4.41728,-2.38233 4.41728,-2.38233c-2.06537,-0.51982 -10.5175,-0.25883 -11.82238,1.49637c-1.30488,1.7552 -0.57466,-0.25159 -0.13483,0.9977c0.43983,1.24929 6.95096,5.05 12.54617,3.6206c5.59521,-1.42941 7.6566,-5.95585 7.6566,-5.95585z" id="svg_38" opacity="0.98" stroke="#000"/>
+  <ellipse stroke="#000" ry="1.452124" rx="1.007285" id="svg_5" cy="108.030047" cx="177.185697" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <ellipse stroke="#000" ry="1.452124" rx="1.007285" id="svg_8" cy="107.669687" cx="207.81627" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <text font-weight="bold" fill="#130a72" stroke="#000" stroke-width="0" stroke-opacity="null" x="140.938558" y="36.219674" id="svg_2" font-size="19" font-family="Arvo, sans-serif" text-anchor="start" xml:space="preserve">How to Read</text>
+  <path fill="#FFDBD2" stroke-width="0" d="m300.777852,138.757198c0,0 10.108735,0.808701 12.13049,0c2.021754,-0.808701 -1.617401,-14.556591 4.043497,-21.430537c5.660898,-6.873939 7.278287,-11.726136 8.086993,-17.387034c0.808707,-5.660898 0,-8.491334 0,-12.939184c0,-4.44785 -0.808701,-12.93919 -0.808701,-12.93919c0,0 -19.166172,-2.022719 -21.107052,-8.896179c-1.94088,-6.87346 0.080868,4.852682 -12.858322,5.25703c-2.021748,0.808701 -2.426096,16.57834 -2.506964,16.577848c0.080868,5.762491 -0.020222,8.092694 0.889569,14.152729c0.90979,6.060035 4.953305,13.141376 10.310927,18.094657c5.357622,4.953281 1.819563,19.50986 1.819563,19.50986z" id="svg_14" stroke="#000"/>
+  <path fill="#FFDBD2" stroke-width="0" stroke-opacity="null" d="m323.883185,90.22612c0,0 7.808006,-3.217401 8.198404,3.706538c0.390404,6.923945 -5.856005,7.413076 -7.027205,6.795323c-1.1712,-0.617758 -1.1712,-10.501861 -1.1712,-10.501861l0.000001,0z" id="svg_16" stroke="#000"/>
+  <path fill="#fcd3bf" stroke-width="0" stroke-opacity="null" d="m288.189287,91.59885c0,0 -6.178469,-4.118977 -7.632236,3.634408c-1.453766,7.753385 5.451579,8.116827 9.085994,7.389944c-1.93835,-1.938357 -1.453759,-11.024351 -1.453759,-11.024351l0.000001,-0.000001z" id="svg_17" stroke="#000"/>
+  <ellipse fill="url(#svg_23)" stroke="#000" stroke-width="0" stroke-opacity="null" cx="291.141145" cy="168.602516" id="svg_19" rx="6.999965" ry="6.999965" fill-opacity="0.4"/>
+  <ellipse fill="#ffffff" stroke-width="0" stroke-opacity="null" cx="290.953916" cy="164.602537" id="svg_21" rx="8.062459" ry="7.74996" stroke="#000"/>
+  <ellipse fill="#0E353B" stroke-width="0" stroke-opacity="null" cx="83.001951" cy="84.448967" id="svg_22" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <ellipse fill="url(#svg_23)" stroke="#000" stroke-width="0" stroke-opacity="null" cx="322.357432" cy="168.352786" id="svg_26" rx="6.999965" ry="6.999965" fill-opacity="0.4"/>
+  <ellipse fill="#ffffff" stroke-width="0" stroke-opacity="null" cx="322.170202" cy="164.352807" id="svg_27" rx="8.062459" ry="7.74996" stroke="#000"/>
+  <ellipse fill="#0E353B" stroke-width="0" stroke-opacity="null" cx="113.501922" cy="83.948968" id="svg_28" rx="2.999999" ry="2.926825" stroke="#000"/>
+  <path fill="#FFDBD2" stroke="#000" stroke-width="0" stroke-opacity="null" fill-opacity="null" opacity="0.5" d="m87.047458,79.278499c0,0 -9.69163,-3.0837 -10.04405,-3.1718" id="svg_29"/>
+  <path fill="#2e3766" stroke-width="0" stroke-opacity="null" d="m95.026105,159.072914c0,0 -1.8546,-0.50528 -1.80109,2.1099c0.0535,2.61518 1.76173,12.30265 12.41156,12.65933c10.64983,0.35668 13.29373,-9.47298 13.0039,-11.86814c-0.28982,-2.39516 -0.69936,-2.47034 -2.0012,-2.63735c-1.30185,-0.16701 -19.79751,-0.92631 -21.61317,-0.26374z" id="svg_30" opacity="0.98" stroke="#000"/>
+  <path fill="#f7f7f7" stroke-width="0" stroke-opacity="null" d="m96.358115,158.908054c0,0 -0.71783,2.49554 -0.01795,3.74722c0.69986,1.2517 17.71308,1.18947 18.23351,0.38095c0.52045,-0.80853 0.76334,-3.25121 0.10649,-3.84519c-0.65685,-0.59397 -17.08373,-0.73001 -18.32205,-0.28298z" id="svg_31" opacity="0.98" stroke="#000"/>
+  <path fill="#ffaad4" stroke-width="0" stroke-opacity="null" d="m116.886705,167.908394c0,0 -2.42949,-0.7147 -5.96332,-0.15882c-3.53381,0.55588 -5.38866,2.41839 -6.55227,2.85881c-1.16362,0.44042 -0.14725,-0.47648 -0.14725,-0.47648c0,0 4.41728,-2.38233 4.41728,-2.38233c-2.06537,-0.51982 -10.5175,-0.25883 -11.82238,1.49637c-1.30488,1.7552 -0.57466,-0.25159 -0.13483,0.9977c0.43983,1.24929 6.95096,5.05 12.54617,3.6206c5.59521,-1.42941 7.6566,-5.95585 7.6566,-5.95585z" id="svg_32" opacity="0.98" stroke="#000"/>
+  <ellipse stroke="#000" ry="1.452124" rx="1.007285" id="svg_35" cy="119.636191" cx="82.497976" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <ellipse stroke="#000" ry="1.452124" rx="1.007285" id="svg_36" cy="119.275831" cx="113.128549" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <line fill="none" stroke="#000938" x1="231.515336" y1="116.726336" x2="284.433959" y2="91.144993" id="svg_37" stroke-linejoin="null" stroke-linecap="null" stroke-width="2" filter="url(#svg_37_blur)" opacity="0.67" stroke-dasharray="5,5"/>
+  <text fill="#130a72" stroke="#000" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="284.180838" y="148.626235" id="svg_41" font-size="8" font-family="Arvo, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold">Calories burned</text>
+  <line stroke="#000938" stroke-dasharray="5,5" fill="none" x1="213.14107" y1="120.675395" x2="280.704243" y2="170.137808" id="svg_42" stroke-linejoin="null" stroke-linecap="null" stroke-width="2" filter="url(#svg_37_blur)" opacity="0.67"/>
+  <text fill="#130a72" stroke="#000938" stroke-width="0" x="284.619628" y="187.250556" id="svg_43" font-size="8" font-family="Arvo, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold">How long did I sleep at night</text>
+  <line stroke-dasharray="5,5" fill="none" x1="123.716066" y1="164.609044" x2="185.937" y2="144.841632" id="svg_45" stroke-linejoin="null" stroke-linecap="null" stroke-width="2" filter="url(#svg_37_blur)" opacity="0.67" stroke="#000938"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="13" id="svg_3" y="168.67889" x="78.367016" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#130a72">/</text>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="8" id="svg_7" y="186.087843" x="30.999741" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#130a72">exercise / no exercise</text>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="8" id="svg_54" y="97.800033" x="16.4654" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#130a72">How long did I take a nap</text>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="8" id="svg_55" y="132.893131" x="55.285197" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#130a72">Sleep efficiency</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="5" id="svg_56" y="141.588766" x="54.974639" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#130a72">= sleep time / time in bed</text>
+  <line stroke="#000938" stroke-dasharray="5,5" fill="none" x1="120.610482" y1="84.795532" x2="180.036391" y2="106.953506" id="svg_57" stroke-linejoin="null" stroke-linecap="null" stroke-width="2" filter="url(#svg_37_blur)" opacity="0.67"/>
+  <line stroke="#000938" stroke-dasharray="5,5" fill="none" x1="114.088756" y1="119.267502" x2="175.067459" y2="108.816847" id="svg_58" stroke-linejoin="null" stroke-linecap="null" stroke-width="2" filter="url(#svg_37_blur)" opacity="0.67"/>
+ </g>
+</svg>

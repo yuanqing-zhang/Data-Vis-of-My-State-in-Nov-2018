@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3160102539_张远青</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.3.0"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <style type="text/css">
+    iframe{
+        float: left;
+        border: none;
+        margin-top: 10px;
+        margin-left: :10px;
+        transform: scale(1.2) translate(40px,85px);
+
+    }
+    svg{
+        float: left;
+        transform: translate(-140px);
+    }
+    g:hover{
+        transition: width 2s ,height 2s, transform 2s;
+        transition-timing-function: ease;
+    }
+    body {
+     font: 10px sans-serif;
+    }
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 12px;
+      background: rgba(211, 218, 234, 0.95);
+      color: #01005e;
+      border-radius: 5px;
+      border-top: 3px solid #aaa;
+      border-right: 3px solid #aaa;
+      border-left: 3px solid #aaa;
+      border-bottom: 3px solid #aaa;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+        display: block;
+        content: ' ';
+        background: rgba(211, 218, 234, 0.95);
+        width: 10px;
+        height: 10px;
+        border-top: 3px solid #aaa;
+        border-right: 3px solid #aaa;
+        border-top-right-radius: 2px;
+        position: absolute;
+        transform: translate(-20px,-4px) rotate(-135deg);
+    }
+    .stat-container {
+        width: 100%;
+        float: left;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+        border-bottom: 1px dotted #ccc;
+    }
+    .stat-container .stat-label {
+        font-family: Gordita,Helvetica,Arial,sans-serif;
+        font-weight: 530;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1.1px;
+        color: #999;
+        display: block;
+        margin-top: 4px;
+        margin-bottom:4px;
+    }
+    .stat-container .stat-barn {
+        font-size: 16px;
+        color: #4a4a4a;
+        margin-top: 4px;
+        margin-bottom:4px;
+
+    }
+    </style>
+</head>
+<body>
+    <iframe src="legend.svg" width="420" height="320"></iframe>
+    <svg width="1300" height="1500" id="charts">
+        <defs>
+        <linearGradient id="svg_23" x1="0" y1="1" x2="0" y2="0" spreadMethod="pad">
+        <stop stop-color="#494848" offset="0"/>
+        <stop stop-color="#b6b7b7" offset="1"/>
+        </linearGradient>
+        </defs>
+    </svg>
+
+   <script type="text/javascript">
+
+    var face = d3.select("#charts")
+            .append("svg:text")
+            .text("Data Viz of My State in 2018.12")
+            .attr("fill","#001999")
+            .attr('x', 550)
+            .attr('y', 50)
+            .attr("style","font-weight:bold;")
+            .attr('text-anchor', 'middle')
+            .style('font-size', '35px')
+            .attr('dy', 8);
+
+    var day_7 = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
+    for(var i = 0; i < 7; i++)
+    {
+        var day = d3.select("#charts")
+            .append("svg:g")
+            .attr("class", "day"+i)
+            .attr("transform", "translate(" + (120*(i+1)+150) + "," + 100 + ")");
+        var weekday = day.append("svg:text")
+            .text(day_7[i])
+            .attr("class", day_7[i])
+            .attr('x', 45)
+            .attr('y', 15)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '20px')
+            .attr('dy', 8);
+
+    }
+    addLines();
+
+
+
+    var sleep_time= [0,0,0,0,0,0,480,
+                    508,471,551,443,425,507,0,
+                    569,491,550,426,351,0,357,
+                    589,372,529,443,0,0,429,
+                    615,433,0,522,420,482,493,
+                    562,408,0,0,0,0,0]//时间是倒着的
+    var noon_sleep = [0,0,0,0,0,0,0,
+                    0,0,0,110,74,67,0,
+                    0,77,0,0,0,0,0,
+                    0,99,0,0,0,0,0,
+                    68,0,0,0,0,0,0,
+                    0,0,0,0,0,0,0];
+    var exercise_time = [0,0,0,0,0,0,0,
+                    0,0,1024,0,0,1126,0,
+                    0,0,0,0,2253,0,0,
+                    0,3276,0,0,0,0,923,
+                    0,2355,0,0,2816,2100,0,
+                    0,0,0,0,0,0,0];
+    var calories =[0,0,0,0,0,0,1467,
+                    1424,1297,1631,1499,1438,1477,1388,
+                    1379,1442,1407,1534,1423,1565,1391,
+                    1699,1177,1607,1505,1243,1164,1254,
+                    1361,1780,1176,1194,1651,1505,1453,
+                    1404,1169,0,0,0,0,0];
+    var sleep_efficient=[0,0,0,0,0,0,61,
+                    70,67,60,62,53,49,0,
+                    60,57,60,56,64,0,66,
+                    63,62,71,61,0,0,57,
+                    71,62,0,63,60,63,57,
+                    54,67,0,0,0,0,0];
+
+    for (var i = 0; i < 6; i++) 
+    {
+        for(var j = 0; j < 7; j++)
+        {
+            var data = { "x":120*(j+1)+150, "y":170*i+150,"date":i*7+j-4, "sleep_time":630-sleep_time[41-i*7-j],"noon_sleep":noon_sleep[41-i*7-j],"exercise_time":exercise_time[41-i*7-j],"calories":calories[41-i*7-j],"sleep_efficient":sleep_efficient[41-i*7-j]};
+            if(sleep_time[41-i*7-j]!=0)
+            {
+                face_factory("face"+(i*7+j-4), data);
+                add_lip("face"+(i*7+j-4),data);
+            }
+            else
+            {
+                if(i>0&&i<5)
+                    face_factory2("face"+(i*7+j-4),data);//no data 
+            }
+        }
+    }
+
+
+
+
+    for(var i=0;i<42;i++)
+    {
+        var data2 = { "x":1150, "y":i*24.2+130,"date":i-4, "sleep_time":630-sleep_time[41-i],"noon_sleep":noon_sleep[41-i],"exercise_time":exercise_time[41-i],"calories":calories[41-i],"sleep_efficient":sleep_efficient[41-i]};
+        if(sleep_time[41-i]!=0)
+        {
+            addChart("bar"+(i),data2); 
+        } 
+    }
+
+
+    function addChart(classname,data)
+    {
+        var subchart = d3.select("#charts")
+            .append("svg:g")
+                .attr("class", classname)
+                .attr("id", classname+"_sub")
+                .attr("transform", "translate(" + data.x + "," + data.y + ")");
+
+
+        var sleep_time = (630-data.sleep_time)/8;
+        var weak = (630-data.sleep_time)*data.sleep_efficient/100/8;
+        //console.log(sleep_time);
+        var bar = subchart.append("svg:rect")
+                .attr("class","bar")
+                .attr("fill", "#66bcff")
+                .attr("fill-opacity",0.9)
+                .attr("width",sleep_time)
+                .attr("height",20);
+        var bar_sub = subchart.append("svg:rect")
+                .attr("class","bar")
+                .attr("fill", "#0b0989")
+                .attr("fill-opacity",0.9)
+                .attr("width",weak)
+                .attr("height",20);
+
+        var cal = (data.calories-800)/20;
+        var bar_cal = subchart.append("svg:rect")
+                .attr("class","bar")
+                .attr("fill", "#ffaad4")
+                .attr("fill-opacity",0.9)
+                .attr("x",100)
+                .attr("width",cal)
+                .attr("height",20);
+
+        var point_size1 = d3.scale.linear()
+                .domain([0,3300])
+                .interpolate(d3.interpolate)
+                .range([0,10])
+        var point = subchart.append("svg:ellipse")
+                .attr("class","point1")
+                .attr("fill", "#ff8cc3")
+                .attr("fill-opacity", 0.6)
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", -25)
+                .attr("cy", 10)
+                .attr("rx", function(d){ return point_size1(data.exercise_time);})
+                .attr("ry", function(d){ return point_size1(data.exercise_time);}) 
+
+        var point_size2 = d3.scale.linear()
+                .domain([0,110])
+                .interpolate(d3.interpolate)
+                .range([0,10])
+        var point2 = subchart.append("svg:ellipse")
+                .attr("class","point1")
+                .attr("fill", "#66bcff")
+                .attr("fill-opacity", 0.6)
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", -50)
+                .attr("cy", 10)
+                .attr("rx", function(d){ return point_size2(data.noon_sleep);})
+                .attr("ry", function(d){ return point_size2(data.noon_sleep);}) 
+        
+
+        var highlight = subchart.append("svg:rect")
+                .attr("class","bar")
+                .attr("id","hl"+data.date)
+                .attr("fill", "#000")
+                .attr("fill-opacity",0)
+                .attr("x",-60)
+                .attr("y",-2.5)
+                .attr("width",230)
+                .attr("height",25);
+    }
+
+    function add_lip(classname,data)
+    {
+        var hour = Math.floor((630-data.sleep_time)/60);
+        var minite = (630-data.sleep_time)%60;
+        var hour_noon = Math.floor((data.noon_sleep)/60);
+        var minite_noon = (data.noon_sleep)%60;
+        var minite_ex = Math.floor(data.exercise_time/60);
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([300, 150])
+          .html(function(d) {
+            return "<div class='tip-inner'><h3 class='state-name tt-update' data-field='name' data-format='none'>2018-12-"+data.date+"</h3><div class='stat-container'><span class='stat-label'>Sleep Time in Night:</span> <span class='stat-barn tt-update' data-field='uninsured' data-format='perc'>"+hour+" hours "+minite+" minites "+"</span><span class='stat-label'>Nap Time:</span> <span class='stat-barn tt-update' data-field='uninsured' data-format='perc'>"+hour_noon+" hours "+minite_noon+" minites "+"</span><span class='stat-label'>Sleep Efficiency:</span> <span class='stat-barn tt-update' data-field='uninsured' data-format='perc'>"+data.sleep_efficient+"%"+"</span><span class='stat-label'>Exercise Time:</span> <span class='stat-barn tt-update' data-field='uninsured' data-format='perc'>"+minite_ex+" minites "+"</span><span class='stat-label'>Calories burned:</span> <span class='stat-barn tt-update' data-field='uninsured' data-format='perc'>"+data.calories+" Cal"+"</span></div></div>";})
+          //console.log( document.getElementById(classname+"_myface").innerSVG());
+
+        var tagname = "#"+classname+"_g";
+        console.log(tagname);
+        d3.select(tagname)
+                .call(tip)
+                 .on("mouseover", function(d) {
+                 	tip.show();
+                 	var hover_color =  "#ff9e38";
+				    d3.select("#"+classname+"_hair1_hover").style("stroke", hover_color);
+				    d3.select("#"+classname+"_hair2_hover").style("stroke",  hover_color);
+				    d3.select("#"+classname+"_myface_hover").style("stroke", hover_color);
+				    d3.select("#"+classname+"_ear1_hover").style("stroke",   hover_color);
+				    d3.select("#"+classname+"_ear2_hover").style("stroke",   hover_color);
+                    d3.select("#"+"hl"+data.date).style("fill-opacity",0.2);
+
+				  })
+				.on("mouseout", function(d) {
+					tip.hide();
+				    d3.select("#"+classname+"_hair1_hover").style("stroke", "#fff");
+				    d3.select("#"+classname+"_hair2_hover").style("stroke", "#fff");
+				    d3.select("#"+classname+"_myface_hover").style("stroke", "#fff");
+				    d3.select("#"+classname+"_ear1_hover").style("stroke", "#fff");
+				    d3.select("#"+classname+"_ear2_hover").style("stroke", "#fff");
+                    d3.select("#"+"hl"+data.date).style("fill-opacity",0);
+				  });
+    }
+    function face_factory(classname, data)
+    { 
+      
+        var r = 50;
+
+        //每个头部定位
+        var face = d3.select("#charts")
+            .append("svg:g")
+                //.data([data.sort(d3.descending)])
+                //.data([data])
+                .attr("class", classname)
+                .attr("id", classname+"_g")
+                .attr("transform", "translate(" + data.x + "," + data.y + ")");
+
+        var d_myface = "m36.078883,144.140543c0,0 16.66659,1.33333 19.99992,0c3.33333,-1.33333 -2.66666,-23.99991 6.66664,-35.3332c9.3333,-11.33328 11.99994,-19.33325 13.33328,-28.66655c1.33334,-9.3333 0,-13.99993 0,-21.33324c0,-7.33331 -1.33333,-21.33325 -1.33333,-21.33325c0,0 -31.59987,-3.33492 -34.79986,-14.66741c-3.19999,-11.33249 0.13333,8.00077 -21.19992,8.66743c-3.33332,1.33333 -3.99998,27.33323 -4.13331,27.33242c0.13333,9.5008 -0.03334,13.34268 1.46666,23.33405c1.5,9.99137 8.16667,21.6666 16.99995,29.83323c8.83328,8.16663 2.99997,32.16652 2.99997,32.16652z"
+
+        //ear 1
+        var d_ear1 = "m73.412063,53.180493c0,0 13.33328,-5.49417 13.99994,6.32944c0.66667,11.82362 -9.99996,12.65888 -11.99995,11.60398c-1.99999,-1.05491 -1.99999,-17.93342 -1.99999,-17.93342z"
+       //ear 2
+        var d_ear2 = "m15.078963,56.140883c0,0 -8.49995,-5.66663 -10.49995,4.99999c-2,10.66662 7.49994,11.16662 12.49994,10.16662c-2.66666,-2.66667 -1.99999,-15.16661 -1.99999,-15.16661z"
+
+        //hair2_hover
+        var hair2_hover = face.append("svg:rect")
+                .attr("id", classname+"_hair2_hover")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 8)
+                .attr("width", 72.6)
+                .attr("height", 88)
+                .attr("x", 9.4)
+                .attr("y", 42.8)
+        //hair1_hover
+        var hair1_hover = face.append("svg:ellipse")
+                .attr("id", classname+"_hair1_hover")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 8)
+                .attr("rx", 36.666)
+                .attr("ry", 38.333)
+                .attr("cx", 45.4)
+                .attr("cy", 45.1)
+        //face_hover
+        var myface_hover= face.append("svg:path")
+                .attr("class","myface")
+                .attr("id", classname+"_myface_hover")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 8)
+                .attr("d",d_myface);
+
+        var ear1_hover = face.append("svg:path")
+                .attr("id",classname+"_ear1_hover")
+                .attr("stroke","#fff")
+                .attr("stroke-width", 8)
+                .attr("d",d_ear1);
+
+
+        var ear2_hover = face.append("svg:path")
+                .attr("id",classname+"_ear2_hover")
+                .attr("stroke","#fff")
+                .attr("stroke-width", 8)
+                .attr("d",d_ear2);
+
+
+        //hair1
+        var hair1 = face.append("svg:ellipse")
+                .attr("class", "hair1")
+                .attr("fill", "#052077")
+                .attr("stroke", "#000")
+                .attr("stroke-width", 0)
+                .attr("rx", 36.666)
+                .attr("ry", 38.333)
+                .attr("cx", 45.4)
+                .attr("cy", 45.1)
+        //hair2
+        var hair2 = face.append("svg:rect")
+                .attr("class", "hair2")
+                .attr("fill", "#052077")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 0)
+                .attr("width", 72.6)
+                .attr("height", 88)
+                .attr("x", 9.4)
+                .attr("y", 42.8)
+
+
+        //face
+
+        var face_color = d3.scale.linear()
+                .domain([1100, 1700])
+                .interpolate(d3.interpolateRgb)
+                .range(["#ffecdb", "#ffd5c9"]);
+
+        //face
+        var myface= face.append("svg:path")
+                .attr("class","myface")
+                .attr("id", classname+"_myface")
+                .attr("fill", function(d){ return face_color(data.calories);})
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("d",d_myface);
+
+        //mouth 1
+        var d_mouth1_1 = "m32.427013,80.556003c0,0 5.24999,-1.95832 6.74998,-1.66666c1.49999,0.29166 2.74999,0.99999 3.24999,0.99999c0.5,0 0.83333,-0.83333 3.41666,-1.24999c2.58333,-0.41666 7.24998,1.91666 7.24998,1.91666c-1.375,1.25 -1.24998,0.875 -4.66665,0.83333c-3.41667,-0.04167 -4.12498,0.5 -6.83332,0.33333c-2.70834,-0.16667 -6.62498,0.33333 -8.16665,-0.5c-1.54167,-0.83333 -0.99999,-0.66666 -0.99999,-0.66666z"
+        //mouth 2
+        var d_mouth1_2 = "m33.969383,82.223093c0,0 6.375,0.625 8.375,0.625c2,0 8.875,-0.625 9.625,-0.5c0.75,0.125 -0.875,2 -2.25,2.625c-1.375,0.625 -3.125,2.25 -7.5,2c-4.375,-0.25 -7.125,-2.25 -7.375,-2.5c-0.25,-0.25 -2,-2 -0.875,-2.25z"
+        var d_mouth2_1 = "m32.926684,78.357927c0,0 -1.854606,-0.505273 -1.801098,2.109905c0.053508,2.615178 1.761735,12.30265 12.411562,12.65933c10.649827,0.35668 13.293732,-9.472979 13.003906,-11.868142c-0.289826,-2.395163 -0.69936,-2.470337 -2.001208,-2.637349c-1.301848,-0.167012 -19.797509,-0.926312 -21.613162,-0.263743z" 
+        var d_mouth2_2 = "m34.258686,78.193069c0,0 -0.717822,2.495544 -0.017949,3.747223c0.699861,1.251693 17.713083,1.189469 18.233517,0.380943c0.520444,-0.808526 0.763334,-3.251205 0.106485,-3.845182c-0.656849,-0.593976 -17.083731,-0.730016 -18.322052,-0.282985z" 
+        var d_mouth2_3 = "m54.78728,87.19341c0,0 -2.42949,-0.7147 -5.96332,-0.15882c-3.53381,0.55588 -5.38866,2.41839 -6.55227,2.85881c-1.16362,0.44042 -0.14725,-0.47648 -0.14725,-0.47648c0,0 4.41728,-2.38233 4.41728,-2.38233c-2.06537,-0.51982 -10.5175,-0.25883 -11.82238,1.49637c-1.30488,1.7552 -0.574659,-0.251593 -0.13483,0.9977c0.439829,1.249292 6.95096,5.05 12.54617,3.6206c5.59521,-1.42941 7.6566,-5.95585 7.6566,-5.95585z" 
+
+        if(data.exercise_time == 0)
+        {       
+            var mouth1_1 = face.append("svg:path")
+                    .attr("class","mouth1_1")
+                    .attr("fill", "#FFAAB8")
+                    .attr("stroke","#000")
+                    .attr("stroke-width", 0)
+                    .attr("d",d_mouth1_1);
+            var mouth1_2 = face.append("svg:path")
+                    .attr("class","mouth1_2")
+                    .attr("fill", "#FFAAB8")
+                    .attr("stroke","#000")
+                    .attr("stroke-width", 0)
+                    .attr("d",d_mouth1_2); 
+        }
+        else
+        {
+            var mouth2_1 = face.append("svg:path")
+                    .attr("class","mouth2_1")
+                    .attr("fill", "#2e3766")
+                    .attr("stroke","#000")
+                    .attr("stroke-width", 0)
+                    .attr("d",d_mouth2_1);
+                    //.attr("transform","scale(" + data.exercise_time/2000 + ")");
+            var mouth2_2 = face.append("svg:path")
+                    .attr("class","mouth2_2")
+                    .attr("fill", "#f7f7f7")
+                    .attr("stroke","#000")
+                    .attr("stroke-width", 0)
+                    .attr("d",d_mouth2_2);
+            var mouth2_3 = face.append("svg:path")
+                    .attr("class","mouth2_3")
+                    .attr("fill", "#ffaad4")
+                    .attr("stroke","#000")
+                    .attr("stroke-width", 0)
+                    .attr("d",d_mouth2_3);
+        }
+
+
+
+        var ear1 = face.append("svg:path")
+                .attr("class","ear1")
+                .attr("fill", function(d){ return face_color(data.calories);})
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("d",d_ear1);
+
+
+        var ear2 = face.append("svg:path")
+                .attr("class","ear2")
+                .attr("fill", "#fcd3bf")
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("d",d_ear2);
+
+
+        var eyeblack_color = d3.scale.linear()
+                .domain([0, 300])
+                .interpolate(d3.interpolateRgb)
+                .range(["#FFDBD2", "#191970"]);
+        var eyeblack_pos = d3.scale.linear()
+                .domain([0,300])
+                .interpolate(d3.interpolate)
+                .range([59, 63])
+        var eyeblack1 = face.append("svg:ellipse")
+                .attr("class","eyeblack1")
+                .attr("fill", function(d){ return eyeblack_color(data.sleep_time);})
+                .attr("fill-opacity",0.6)
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 27.87)
+                .attr("cy", function(k){ return eyeblack_pos(data.sleep_time);})
+                .attr("rx", 7)
+                .attr("ry", 7)
+        var eyeblack2 = face.append("svg:ellipse")
+                .attr("class","eyeblack2")
+                .attr("fill", function(d){ return eyeblack_color(data.sleep_time);})
+                .attr("fill-opacity",0.6)
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 59.09)
+                .attr("cy", function(k){ return eyeblack_pos(data.sleep_time);})
+                .attr("rx", 7)
+                .attr("ry", 7)
+
+        var shelter1 = face.append("svg:ellipse")
+                .attr("class","shelter1")
+                .attr("fill", function(d){ return face_color(data.calories);})
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 27.69)
+                .attr("cy", 55.10)
+                .attr("rx", 8)
+                .attr("ry", 7.7)               
+        var shelter2 = face.append("svg:ellipse")
+                .attr("class","shelter2")
+                .attr("fill", function(d){ return face_color(data.calories);})
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 58.90)
+                .attr("cy", 55.10)
+                .attr("rx", 8)
+                .attr("ry", 7.7) 
+
+
+        var eye_size = d3.scale.linear()
+                .domain([0,110])
+                .interpolate(d3.interpolate)
+                .range([0,1.5])
+        var eye1 = face.append("svg:ellipse")
+                .attr("class","eye1")
+                .attr("fill", "#0E353B")
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 27.87)
+                .attr("cy", 55.70)
+                .attr("rx", function(d){ return 2.5+eye_size(data.noon_sleep);})
+                .attr("ry", function(d){ return 2.5+eye_size(data.noon_sleep);}) 
+        var eye2 = face.append("svg:ellipse")
+                .attr("class","eye2")
+                .attr("fill", "#0E353B")
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 58.90)
+                .attr("cy", 55.10)
+                .attr("rx", function(d){ return 2.5+eye_size(data.noon_sleep);})
+                .attr("ry", function(d){ return 2.5+eye_size(data.noon_sleep);})
+        
+        var eye_white_size= d3.scale.linear()
+                .domain([45,75])
+                .interpolate(d3.interpolate)
+                .range([0,1.5])    
+        var eye_white_1 = face.append("svg:ellipse")
+                .attr("class","eye_white_1")
+                .attr("fill", "#ffffff")
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 26.132973)
+                .attr("cy", 54.896409)
+                .attr("rx", function(d){ return 1.0*eye_white_size(data.sleep_efficient);})
+                .attr("ry", function(d){ return 1.5*eye_white_size(data.sleep_efficient);}) 
+        var eye_white_2 = face.append("svg:ellipse")
+                .attr("class","eye_white_2")
+                .attr("fill", "#ffffff")
+                .attr("stroke","#000")
+                .attr("stroke-width", 0)
+                .attr("cx", 56.763546)
+                .attr("cy", 54.896409)
+                .attr("rx", function(d){ return 1.0*eye_white_size(data.sleep_efficient);})
+                .attr("ry", function(d){ return 1.5*eye_white_size(data.sleep_efficient);}) 
+
+        var date = face.append("svg:text")
+            .text(data.date)
+            .attr("class", "dare_"+data.date)
+            .attr("fill","#abb2bc")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr("style","font-style:italic;")
+            .attr('text-anchor', 'middle')
+            .style('font-size', '25px')
+            .attr('dy', 8);
+
+    }
+    function face_factory2(classname,data)
+    {
+        var face = d3.select("#charts")
+            .append("svg:g")
+                .attr("class", classname)
+                .attr("id", classname+"_g")
+                .attr("transform", "translate(" + data.x + "," + data.y + ")");
+        var date = face.append("svg:text")
+            .text(data.date)
+            .attr("class", "dare_"+data.date)
+            .attr("fill","#abb2bc")
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr("style","font-style:italic;")
+            .attr('text-anchor', 'middle')
+            .style('font-size', '25px')
+            .attr('dy', 8);
+        var date = face.append("svg:text")
+            .text("N/A")
+            .attr("fill","#eaedfc")
+            .attr('x', 50)
+            .attr('y', 70)
+            .attr("style","font-style:italic;")
+            .attr('text-anchor', 'middle')
+            .style('font-size', '15px')
+            .attr('dy', 8);
+    }
+    function addLines()
+    {
+        var line1 = d3.select("#charts")
+                .append("svg:rect")
+                    .attr("fill", "#000")
+                    .attr("fill-opacity",0.2)
+                    .attr("width",1)
+                    .attr("height",950)
+                    .attr("x",1100)
+                    .attr("y",110);
+        var text = d3.select("#charts")
+                    .append("svg:g")
+                    .attr("transform", "translate(1100,110)");
+
+        var text_sub1 = text.append("svg:text")
+                .text("nap time")
+                .attr("transform","rotate(90)")
+                .attr("fill","#a3a3a3")
+                .style('font-size', '16px');
+
+        var line2 = d3.select("#charts")
+                .append("svg:rect")
+                    .attr("fill", "#000")
+                    .attr("fill-opacity",0.2)
+                    .attr("width",1)
+                    .attr("height",950)
+                    .attr("x",1125)
+                    .attr("y",110);
+        var text_sub2 = text.append("svg:text")
+                .text("exercise time")
+                .attr("transform","rotate(90)")
+                .attr("y",-25)
+                .attr("fill","#a3a3a3")
+                .style('font-size', '16px');
+        var line3 = d3.select("#charts")
+                .append("svg:rect")
+                    .attr("fill", "#000")
+                    .attr("fill-opacity",0.2)
+                    .attr("width",1)
+                    .attr("height",950)
+                    .attr("x",1150)
+                    .attr("y",110);
+
+        var text_sub3 = text.append("svg:text")
+                .text("weak &")
+                .attr("transform","rotate(90)")
+                .attr("y",-64)
+                .attr("fill","#a3a3a3")
+                .style('font-size', '16px');
+        var text_sub3 = text.append("svg:text")
+                .text("sleep time")
+                .attr("transform","rotate(90)")
+                .attr("y",-50)
+                .attr("fill","#a3a3a3")
+                .style('font-size', '16px');
+        var line4 = d3.select("#charts")
+                .append("svg:rect")
+                    .attr("fill", "#000")
+                    .attr("fill-opacity",0.2)
+                    .attr("width",1)
+                    .attr("height",950)
+                    .attr("x",1250)
+                    .attr("y",110);
+        var text_sub4 = text.append("svg:text")
+                .text("calories burned")
+                .attr("transform","rotate(90)")
+                .attr("y",-150)
+                .attr("fill","#a3a3a3")
+                .style('font-size', '16px');
+
+    }
+
+
+
+   
+</script>
+</body>
+</html>
+
