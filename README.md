@@ -6,4 +6,4 @@
 <br>
 
 
-![Image text](https://github.com/Yevtte/Data-Vis-of-My-State-in-Nov-2018/blob/master/src/legend.png)
+![Image](https://github.com/Yevtte/Data-Vis-of-My-State-in-Nov-2018/raw/master/src/legend.png)
